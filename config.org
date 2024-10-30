@@ -1,0 +1,25 @@
+#+TITLE: Emacs Configuration File
+#+PROPERTY: header-args :tangle ~/.emacs
+
+* Packages
+#+begin_src elisp
+(unless (package-installed-p 'vertico)
+  (package-refresh-contents)
+   package-install 'vertico))
+#+end_src
+
+* Visual
+#+begin_src elisp
+(load-theme 'tango-dark)
+#+end_src
+
+* Search
+#+begin_src elisp
+(setq completion-styles '(flex))
+(vertico-mode 1)
+#+end_src
+
+* Keybinding
+#+begin_src elisp
+(global-set-key (kbd "C-c f") 'find-name-dired)
+#+end_src

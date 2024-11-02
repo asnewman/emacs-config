@@ -28,7 +28,7 @@ Magit is an emacs git client.
 *** Usage
 C-x g opens up the status page. From there you can stage (s) or unstage (u) files.
 c to commit, but you need to do C-c C-c to save the commit message.
-p to push.
+P to push.
 q to quit.
 
 * Visual

@@ -1,11 +1,23 @@
 #+TITLE: Emacs Configuration File
 #+PROPERTY: header-args :tangle ~/.emacs
 
+* To Run
+To run this file, do C-c C-v t which will tangle all the elisp code and place it into ~/.emacs. Then re-open emacs to see the changes.
+
 * Packages
 #+begin_src elisp
-(unless (package-installed-p 'vertico)
-  (package-refresh-contents)
-   package-install 'vertico))
+      (require 'package)
+
+      (add-to-list 'package-archives
+		 '("melpa" . "https://melpa.org/packages/") t)
+
+  (unless (package-installed-p 'magit)
+	(package-refresh-contents)
+	(package-install 'magit))
+  
+      (unless (package-installed-p 'vertico)
+	(package-refresh-contents)
+	(package-install 'vertico))
 #+end_src
 
 * Visual

@@ -11,14 +11,25 @@ To run this file, do C-c C-v t which will tangle all the elisp code and place it
       (add-to-list 'package-archives
 		 '("melpa" . "https://melpa.org/packages/") t)
 
-  (unless (package-installed-p 'magit)
-	(package-refresh-contents)
-	(package-install 'magit))
-  
       (unless (package-installed-p 'vertico)
 	(package-refresh-contents)
 	(package-install 'vertico))
 #+end_src
+
+** Magit
+Magit is an emacs git client.
+*** Setup
+#+begin_src elisp
+(unless (package-installed-p 'magit)
+	(package-refresh-contents)
+	(package-install 'magit))
+#+end_src
+
+*** Usage
+C-x g opens up the status page. From there you can stage (s) or unstage (u) files.
+c to commit, but you need to do C-c C-c to save the commit message.
+p to push.
+q to quit.
 
 * Visual
 #+begin_src elisp

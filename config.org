@@ -1,3 +1,4 @@
+
 #+TITLE: Emacs Configuration File
 #+PROPERTY: header-args :tangle ~/.emacs
 
@@ -6,23 +7,21 @@ To run this file, do C-c C-v t which will tangle all the elisp code and place it
 
 * Packages
 #+begin_src elisp
-      (require 'package)
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
-      (add-to-list 'package-archives
-		 '("melpa" . "https://melpa.org/packages/") t)
-
-      (unless (package-installed-p 'vertico)
-	(package-refresh-contents)
-	(package-install 'vertico))
+  (unless (package-installed-p 'vertico)
+    (package-refresh-contents)
+    (package-install 'vertico))
 #+end_src
 
 ** Magit
 Magit is an emacs git client.
 *** Setup
 #+begin_src elisp
-(unless (package-installed-p 'magit)
-	(package-refresh-contents)
-	(package-install 'magit))
+  (unless (package-installed-p 'magit)
+    (package-refresh-contents)
+    (package-install 'magit))
 #+end_src
 
 *** Usage
@@ -30,6 +29,39 @@ C-x g opens up the status page. From there you can stage (s) or unstage (u) file
 c to commit, but you need to do C-c C-c to save the commit message.
 P to push.
 q to quit.
+
+** lsp-mode
+#+begin_src elisp
+  (unless (package-installed-p 'lsp-mode)
+    (package-refresh-contents)
+    (package-install 'lsp-mode))
+  (require 'lsp-mode)
+
+  (unless (package-installed-p 'company)
+    (package-refresh-contents)
+    (package-install 'company))
+  (require 'company)
+  (global-company-mode 1) ; Enable `company-mode` globally
+
+  (setq company-minimum-prefix-length 1
+
+	company-idle-delay 0.0) ; Show completions immediately
+#+end_src
+
+** web-mode
+#+begin_src elisp
+  (unless (package-installed-p 'web-mode)
+    (package-refresh-contents)
+    (package-install 'web-mode))
+  (require 'web-mode)
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
+  ;;(add-hook 'web-mode-hook #'lsp)
+  (add-hook 'web-mode-hook #'lsp-deferred)
+  (setq web-mode-markup-indent-offset 2) ; For HTML
+  (setq web-mode-css-indent-offset 2)    ; For CSS
+  (setq web-mode-code-indent-offset 2)   ; For JavaScript, PHP, etc.
+
+#+end_src
 
 * Visual
 #+begin_src elisp
@@ -42,7 +74,8 @@ q to quit.
 (vertico-mode 1)
 #+end_src
 
-* Keybinding
+* Keybindings
 #+begin_src elisp
 (global-set-key (kbd "C-c f") 'find-name-dired)
 #+end_src
+

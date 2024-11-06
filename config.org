@@ -1,4 +1,3 @@
-
 #+TITLE: Emacs Configuration File
 #+PROPERTY: header-args :tangle ~/.emacs
 
@@ -7,12 +6,13 @@ To run this file, do C-c C-v t which will tangle all the elisp code and place it
 
 * Packages
 #+begin_src elisp
-  (require 'package)
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+    (require 'package)
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+
 
   (unless (package-installed-p 'vertico)
-    (package-refresh-contents)
-    (package-install 'vertico))
+      (package-refresh-contents)
+      (package-install 'vertico))
 #+end_src
 
 ** Magit
@@ -34,18 +34,21 @@ q to quit.
 #+begin_src elisp
   (unless (package-installed-p 'lsp-mode)
     (package-refresh-contents)
-    (package-install 'lsp-mode))
-  (require 'lsp-mode)
+	(package-install 'lsp-mode))
+      (require 'lsp-mode)
 
-  (unless (package-installed-p 'company)
-    (package-refresh-contents)
-    (package-install 'company))
-  (require 'company)
-  (global-company-mode 1) ; Enable `company-mode` globally
+      (unless (package-installed-p 'company)
+	(package-refresh-contents)
+	(package-install 'company))
 
-  (setq company-minimum-prefix-length 1
+  (setq lsp-clients-typescript-server "typescript-language-server")
 
-	company-idle-delay 0.0) ; Show completions immediately
+    (require 'company)
+      (global-company-mode 1) ; Enable `company-mode` globally
+
+      (setq company-minimum-prefix-length 1
+
+	    company-idle-delay 0.0) ; Show completions immediately
 #+end_src
 
 ** web-mode
@@ -55,6 +58,7 @@ q to quit.
     (package-install 'web-mode))
   (require 'web-mode)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'". web-mode))
   ;;(add-hook 'web-mode-hook #'lsp)
   (add-hook 'web-mode-hook #'lsp-deferred)
   (setq web-mode-markup-indent-offset 2) ; For HTML
@@ -65,7 +69,9 @@ q to quit.
 
 * Visual
 #+begin_src elisp
-(load-theme 'tango-dark)
+    (load-theme 'tango-dark)
+  (global-visual-line-mode t)
+  (global-display-line-numbers-mode t)
 #+end_src
 
 * Search

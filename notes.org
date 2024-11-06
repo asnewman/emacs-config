@@ -1,0 +1,11 @@
+#-TITLE: Emacs instructions
+
+* Navigation
+- 
+
+* Terminal
+=M-x ansi-term= is a pretty good terminal emulator.
+
+** Commands
+- =C-c C-j= gets you into =term-line-mode= so you can do normal emacs commands
+- =C-c C-k= gets you back into =term-char-mode

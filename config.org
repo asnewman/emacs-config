@@ -42,12 +42,6 @@ q to quit.
     (package-install 'company))
   (require 'company)
 
-
-  (setq lsp-clients-typescript-server "typescript-language-server")
-
-    (require 'company)
-      (global-company-mode 1) ; Enable `company-mode` globally
-
       (setq company-minimum-prefix-length 1
 
 	    company-idle-delay 0.0) ; Show completions immediately

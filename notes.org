@@ -9,3 +9,4 @@
 ** Commands
 - =C-c C-j= gets you into =term-line-mode= so you can do normal emacs commands
 - =C-c C-k= gets you back into =term-char-mode
+- =M-d= to delete a word if you are at the beginning (=M-b= to go to the beginning if not)

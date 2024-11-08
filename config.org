@@ -61,7 +61,7 @@ q to quit.
   (setq web-mode-markup-indent-offset 2) ; For HTML
   (setq web-mode-css-indent-offset 2)    ; For CSS
   (setq web-mode-code-indent-offset 2)   ; For JavaScript, PHP, etc.
-
+  (add-hook 'web-mode-hook 'disable-tabs)
 #+end_src
 
 ** prettier-emacs
@@ -78,6 +78,8 @@ q to quit.
     (load-theme 'tango-dark)
   (global-visual-line-mode t)
   (global-display-line-numbers-mode t)
+  ; Turn off the crazy indenting previous line bs
+  (setq-default electric-indent-inhibit t)
 #+end_src
 
 * Search

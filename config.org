@@ -90,5 +90,19 @@ q to quit.
 #+begin_src elisp
   (global-set-key (kbd "C-c f") 'find-name-dired)
   (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/emacs-config/config.org"))) 
-#+end_src
+  (defun forward-to-word-beginning ()
+    "Move point to the beginning of the next word."
+    (interactive)
+    (forward-word)
+    (forward-char))
+  (global-set-key (kbd "M-f") 'forward-to-word-beginning)
+  #+end_src
 
+* Evil mode
+#+begin_src elisp
+  (unless (package-installed-p 'evil)
+    (package-refresh-contents)
+    (package-install 'evil))
+  (require 'evil)
+  (evil-mode 1)
+#+end_src

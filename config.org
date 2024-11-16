@@ -106,3 +106,9 @@ q to quit.
   (require 'evil)
   (evil-mode 1)
 #+end_src
+
+* General config
+Turn off C-z because it hangs emacs
+#+begin_src elisp
+  (global-unset-key (kbd "C-z"))
+#+end_src

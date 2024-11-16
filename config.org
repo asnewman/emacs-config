@@ -89,14 +89,15 @@ q to quit.
 
 * Keybindings
 #+begin_src elisp
-  (global-set-key (kbd "C-c f") 'find-name-dired)
-  (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/emacs-config/config.org"))) 
-  (defun forward-to-word-beginning ()
-    "Move point to the beginning of the next word."
-    (interactive)
-    (forward-word)
-    (forward-char))
-  (global-set-key (kbd "M-f") 'forward-to-word-beginning)
+    (global-set-key (kbd "C-c f") 'find-name-dired)
+    (global-set-key (kbd "C-c d") 'flymake-show-buffer-diagnostics)
+    (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/emacs-config/config.org"))) 
+    (defun forward-to-word-beginning ()
+      "Move point to the beginning of the next word."
+      (interactive)
+      (forward-word)
+      (forward-char))
+    (global-set-key (kbd "M-f") 'forward-to-word-beginning)
   #+end_src
 
 * Evil mode

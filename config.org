@@ -104,8 +104,17 @@ q to quit.
   (unless (package-installed-p 'evil)
     (package-refresh-contents)
     (package-install 'evil))
+
+  (unless (package-installed-p 'evil-collection)
+    (package-refresh-contents)
+    (package-install 'evil-collection))
+
   (require 'evil)
+  (require 'evil-collection)
+  (setq evil-want-keybinding nil)
+
   (evil-mode 1)
+  (evil-collection-init)
 #+end_src
 
 * General config

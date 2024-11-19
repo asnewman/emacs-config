@@ -13,6 +13,13 @@ To run this file, do C-c C-v t which will tangle all the elisp code and place it
   (unless (package-installed-p 'vertico)
     (package-refresh-contents)
     (package-install 'vertico))
+
+  (unless (package-installed-p `neotree)
+    (package-refresh-contents))
+
+  (require 'neotree)
+  (global-set-key (kbd "C-c n") 'neotree-toggle)
+  (setq neo-window-fixed-size nil)
 #+end_src
 
 ** Magit
@@ -110,9 +117,9 @@ q to quit.
     (package-refresh-contents)
     (package-install 'evil-collection))
 
+  (setq evil-want-keybinding nil)
   (require 'evil)
   (require 'evil-collection)
-  (setq evil-want-keybinding nil)
 
   (evil-mode 1)
   (evil-collection-init)

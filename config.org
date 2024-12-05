@@ -3,7 +3,6 @@
 
 * To Run
 To run this file, do C-c C-v t which will tangle all the elisp code and place it into ~/.emacs. Then re-open emacs to see the changes.
-
 * Packages
 #+begin_src elisp
   (require 'package)
@@ -14,11 +13,6 @@ To run this file, do C-c C-v t which will tangle all the elisp code and place it
     (package-refresh-contents)
     (package-install 'vertico))
 
-  (unless (package-installed-p `neotree)
-    (package-refresh-contents))
-
-  (require 'neotree)
-  (global-set-key (kbd "C-c n") 'neotree-toggle)
   (setq neo-window-fixed-size nil)
 #+end_src
 
@@ -39,11 +33,12 @@ q to quit.
 
 ** lsp-mode
 #+begin_src elisp
-  (unless (package-installed-p 'lsp-mode)
-    (package-refresh-contents)
-    (package-install 'lsp-mode))
-  (require 'lsp-mode)
+  ;(unless (package-installed-p 'lsp-mode)
+  ;  (package-refresh-contents)
+  ;  (package-install 'lsp-mode))
+  ;(require 'lsp-mode)
 
+  ;auto complete
   (unless (package-installed-p 'company)
     (package-refresh-contents)
     (package-install 'company))
@@ -51,7 +46,7 @@ q to quit.
 
   (setq company-minimum-prefix-length 1
 
-        company-idle-delay 0.0) ; Show completions immediately
+	company-idle-delay 0.0) ; Show completions immediately
 #+end_src
 
 ** web-mode
@@ -92,6 +87,15 @@ q to quit.
 #+begin_src elisp
   (setq completion-styles '(flex))
   (vertico-mode 1)
+
+  ;control+p search functionality
+  (unless (package-installed-p 'projectile)
+    (package-refresh-contents)
+    (package-install 'projectile))
+
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-use-git-grep t)
 #+end_src
 
 * Keybindings
